@@ -6,13 +6,9 @@ std::string algorithm (char str_in[]){
     bool num_flag=0;
     std::string str, str_out;
     str=str_in;
-    if (str[0]=='-') str.insert (str.begin(), '0');
-    if (str[0]=='('){
-        int count=0;
-        for (; str[count]=='('; count++){}
-        str[count-1]='0';
-        str.insert (str.begin(), '(');
-    }
+    if (str[0]=='-') str.insert(str.begin(), '0');
+    for (int str_check=0; str[str_check]!=0; str_check++){
+        if ((str[str_check]=='-') && (str[str_check-1]=='(')) str.insert(str_check, "0");}
     std::stack <char> stack_char_1;
     stack_char_1.push(0);
     for (int i=0; str[i]!=0; i++){
